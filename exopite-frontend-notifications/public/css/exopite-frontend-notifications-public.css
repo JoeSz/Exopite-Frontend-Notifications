@@ -1,4 +1,6 @@
-/**
- * All of the CSS for your public-facing functionality should be
- * included in this file.
- */
+.lobibox-notify .lobibox-notify-icon > div .icon-el {
+    line-height: 1;
+}
+.lobibox-notify-wrapper.right {
+    right: 5px;
+}
