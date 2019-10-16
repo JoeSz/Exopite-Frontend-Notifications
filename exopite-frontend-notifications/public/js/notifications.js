@@ -180,6 +180,9 @@ var Lobibox = Lobibox || {};
                 .click(function (ev) {
                     ev.preventDefault();
                     ev.stopPropagation();
+                    if (me.$options.onDismiss && typeof me.$options.onDismiss === 'function') {
+                        me.$options.onDismiss.call(me, ev);
+                    }
                     me.remove();
                 }).appendTo($el);
         };
@@ -212,6 +215,9 @@ var Lobibox = Lobibox || {};
                 var width = 100 * time / me.$options.delay;
                 if (width >= 100) {
                     width = 100;
+                    if (me.$options.onAutoDismiss && typeof me.$options.onAutoDismiss === 'function') {
+                        me.$options.onAutoDismiss.call(me);
+                    }
                     me.remove();
                     timer = clearInterval(timer);
                 }
@@ -280,6 +286,9 @@ var Lobibox = Lobibox || {};
                 var next = list[ind];
                 if (next && next.$options.showAfterPrevious) {
                     next._init();
+                }
+                if (me.$options.onHide && typeof me.$options.onHide === 'function') {
+                    me.$options.onHide.call(me);
                 }
             }, 500);
             return me;
@@ -380,7 +389,11 @@ var Lobibox = Lobibox || {};
         continueDelayOnInactiveTab: true, // Continue delay when browser tab is inactive
 
         // Events
-        onClick: null
+        onClick: null,
+        onHide: null,
+        onDismiss: null,
+        onAutoDismiss: null,
+
     };
     //This variable is necessary.
     Lobibox.notify.OPTIONS = {
