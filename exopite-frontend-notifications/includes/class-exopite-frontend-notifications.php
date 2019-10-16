@@ -173,6 +173,26 @@ class Exopite_Frontend_Notifications {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
+		/**
+		 * The wp_ajax_ is telling wordpress to use ajax and the prefix_ajax_first is the hook name to use in JavaScript or in URL.
+		 *
+		 * Call AJAX function via URL: https://www.yourwebsite.com/wp-admin/admin-ajax.php?action=ajax_first&post_id=23&other_param=something
+		 * http://www.test1.localhost/wp-admin/admin-ajax.php?action=efn_get_notifications
+		 *
+		 * The ajax_first is the callback function.
+		 * wp_ajax_ is for authenticated users
+		 * wp_ajax_nopriv_ is for NOT authenticated users
+		 */
+		$this->loader->add_action( 'wp_ajax_efn_get_notifications', $plugin_public, 'ajax_get_notifications' );
+		$this->loader->add_action( 'wp_ajax_nopriv_efn_get_notifications', $plugin_public, 'ajax_get_notifications' );
+
+        $this->loader->add_action( 'wp_ajax_efn_dismiss_notifications', $plugin_public, 'ajax_dismiss_notifications' );
+
+		// $this->loader->add_action( 'wp_ajax_efn_test_callback', $plugin_public, 'test_callback' );
+		// $this->loader->add_action( 'wp_ajax_nopriv_efn_test_callback', $plugin_public, 'test_callback' );
+
+		// $this->loader->add_action( 'wp_footer', $plugin_public, 'footer_test' );
+
 	}
 
 	/**
