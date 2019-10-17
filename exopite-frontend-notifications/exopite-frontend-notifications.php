@@ -15,8 +15,8 @@
  * @wordpress-plugin
  * Plugin Name:       Exopite Frontend Notifications
  * Plugin URI:        https://www.joeszalai.org/exopite/frontend-notifications
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Description:       Display frontend notifications thru hooks with lobibox (PHP & AJAX).
+ * Version:           20191017
  * Author:            Joe Szalai
  * Author URI:        https://www.joeszalai.org
  * License:           GPL-2.0+
@@ -50,6 +50,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'EXOPITE_FRONTEND_NOTIFICATIONS_VERSION', '20190705' );
 define( 'EXOPITE_FRONTEND_NOTIFICATIONS_PLUGIN_NAME', 'exopite-frontend-notifications' );
 define( 'EXOPITE_FRONTEND_NOTIFICATIONS_PATH', plugin_dir_path( __FILE__ ) );
+define( 'EXOPITE_FRONTEND_NOTIFICATIONS_BASENAME', plugin_basename( __FILE__ ) );
 
  /**
  * Update
