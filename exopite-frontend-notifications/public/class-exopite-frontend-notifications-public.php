@@ -331,119 +331,153 @@ class Exopite_Frontend_Notifications_Public {
 
 	}
 
+	/**
+	 * ToDos:
+	 * - check user or roles
+	 * - rename function
+	 */
 	public function footer_get_notifications() {
 
 
 		$messages = apply_filters( 'efn_messages', array() );
 
-		// $messages_test = array(
-		// 	array(
-		// 		'type' => 'warning',
-		// 		'title' => 'Custom title <b>BULLEX</b>',
-		// 		'msg' => 'Test from start with pauseDelayOnHover <b>HTML TEST</b>',
-		// 		'showClass' => 'bounceInDown',  // https://daneden.github.io/animate.css/
-		// 		'hideClass' => 'bounceOutDown', // https://daneden.github.io/animate.css/
-		// 	),
-		// 	// array(
-		// 	// 	'pauseDelayOnHover' => false,
-		// 	// 	'continueDelayOnInactiveTab' => false,
-		// 	// 	'delay' => 15000,
-		// 	// 	'title' => 'Custom title',
-		// 	// 	'msg' => 'Test from start2',
-		// 	// ),
-		// 	// array(
-		// 	// 	'pauseDelayOnHover' => true,
-		// 	// 	'continueDelayOnInactiveTab' => false,
-		// 	// 	// 'closeOnClick' => false,
-		// 	// 	'delay' => false,
-		// 	// 	'closable' => false,
-		// 	// 	'title' => 'No delay',
-		// 	// 	'msg' => 'Test from start3',
-		// 	// ),
-		// 	array(
-		// 		'pauseDelayOnHover' => true,
-		// 		'continueDelayOnInactiveTab' => false,
-		// 		// 'closeOnClick' => false,
-		// 		'delay' => false,
-		// 		'closable' => false,
-		// 		'title' => 'No delay',
-		// 		'msg' => 'Test PAGES1',
-		// 		'pages' => '1',
-		// 	),
-		// 	array(
-		// 		'pauseDelayOnHover' => true,
-		// 		'continueDelayOnInactiveTab' => false,
-		// 		// 'closeOnClick' => false,
-		// 		'delay' => false,
-		// 		'closable' => false,
-		// 		'title' => 'No delay',
-		// 		'msg' => 'Test PAGES2',
-		// 		'pages' => '2',
-		// 	),
-		// 	array(
-		// 		'pauseDelayOnHover' => true,
-		// 		'continueDelayOnInactiveTab' => false,
-		// 		// 'closeOnClick' => false,
-		// 		'delay' => false,
-		// 		'closable' => false,
-		// 		'title' => 'No delay',
-		// 		'msg' => 'Test hallo-welt',
-		// 		'pages' => 'hallo-welt',
-		// 	),
-		// 	array(
-		// 		'pauseDelayOnHover' => true,
-		// 		'continueDelayOnInactiveTab' => false,
-		// 		// 'closeOnClick' => false,
-		// 		'delay' => false,
-		// 		'closable' => false,
-		// 		'title' => 'No delay',
-		// 		'msg' => 'Test logged_in',
-		// 		'roles_users' => 'logged_in',
-		// 	),
-		// 	array(
-		// 		'pauseDelayOnHover' => true,
-		// 		'continueDelayOnInactiveTab' => false,
-		// 		// 'closeOnClick' => false,
-		// 		'delay' => false,
-		// 		'closable' => false,
-		// 		'title' => 'No delay',
-		// 		'msg' => 'Test not_logged_in',
-		// 		'roles_users' => 'not_logged_in',
-		// 	),
-		// 	array(
-		// 		'pauseDelayOnHover' => true,
-		// 		'continueDelayOnInactiveTab' => false,
-		// 		// 'closeOnClick' => false,
-		// 		'delay' => false,
-		// 		'closable' => false,
-		// 		'title' => 'No delay',
-		// 		'msg' => 'Test test1',
-		// 		'roles_users' => 'test1',
-		// 	),
-		// 	array(
-		// 		'pauseDelayOnHover' => true,
-		// 		'continueDelayOnInactiveTab' => false,
-		// 		// 'closeOnClick' => false,
-		// 		'delay' => false,
-		// 		'closable' => false,
-		// 		'title' => 'No delay',
-		// 		'msg' => 'Test administrator',
-		// 		'roles_users' => 'administrator',
-		// 	),
-		// 	array(
-		// 		'pauseDelayOnHover' => true,
-		// 		'continueDelayOnInactiveTab' => false,
-		// 		// 'closeOnClick' => false,
-		// 		'delay' => false,
-		// 		'closable' => false,
-		// 		'title' => 'No delay',
-		// 		'msg' => 'Test contributor',
-		// 		'roles_users' => 'contributor',
-		// 	),
+		$messages_test = array(
+			array(
+				'type' => 'warning',
+				'title' => 'Custom title <b>BULLEX</b>',
+				'msg' => 'Test from start with pauseDelayOnHover <b>HTML TEST</b>',
+				'showClass' => 'bounceInDown',  // https://daneden.github.io/animate.css/
+				'hideClass' => 'bounceOutDown', // https://daneden.github.io/animate.css/
+			),
+			// array(
+			// 	'pauseDelayOnHover' => false,
+			// 	'continueDelayOnInactiveTab' => false,
+			// 	'delay' => 15000,
+			// 	'title' => 'Custom title',
+			// 	'msg' => 'Test from start2',
+			// ),
+			// array(
+			// 	'pauseDelayOnHover' => true,
+			// 	'continueDelayOnInactiveTab' => false,
+			// 	// 'closeOnClick' => false,
+			// 	'delay' => false,
+			// 	'closable' => false,
+			// 	'title' => 'No delay',
+			// 	'msg' => 'Test from start3',
+			// ),
+			array(
+				'pauseDelayOnHover' => true,
+				'continueDelayOnInactiveTab' => false,
+				// 'closeOnClick' => false,
+				'delay' => false,
+				'closable' => false,
+				'title' => 'No delay',
+				'msg' => 'Test PAGES1',
+				'pages' => '1',
+			),
+			array(
+				'pauseDelayOnHover' => true,
+				'continueDelayOnInactiveTab' => false,
+				// 'closeOnClick' => false,
+				'delay' => false,
+				'closable' => false,
+				'title' => 'No delay',
+				'msg' => 'Test PAGES2',
+				'pages' => '2',
+			),
+			array(
+				'pauseDelayOnHover' => true,
+				'continueDelayOnInactiveTab' => false,
+				// 'closeOnClick' => false,
+				'delay' => false,
+				'closable' => false,
+				'title' => 'No delay',
+				'msg' => 'Test hallo-welt',
+				'pages' => 'hallo-welt',
+			),
+			array(
+				'pauseDelayOnHover' => true,
+				'continueDelayOnInactiveTab' => false,
+				// 'closeOnClick' => false,
+				'delay' => false,
+				'closable' => false,
+				'title' => 'No delay',
+				'msg' => 'Test logged_in',
+				'roles_users' => 'logged_in',
+			),
+			array(
+				'pauseDelayOnHover' => true,
+				'continueDelayOnInactiveTab' => false,
+				// 'closeOnClick' => false,
+				'delay' => false,
+				'closable' => false,
+				'title' => 'No delay',
+				'msg' => 'Test not_logged_in',
+				'roles_users' => 'not_logged_in',
+			),
+			array(
+				'pauseDelayOnHover' => true,
+				'continueDelayOnInactiveTab' => false,
+				// 'closeOnClick' => false,
+				'delay' => false,
+				'closable' => false,
+				'title' => 'No delay',
+				'msg' => 'Test test1',
+				'roles_users' => 'test1',
+			),
+			array(
+				'pauseDelayOnHover' => true,
+				'continueDelayOnInactiveTab' => false,
+				// 'closeOnClick' => false,
+				'delay' => false,
+				'closable' => false,
+				'title' => 'No delay',
+				'msg' => 'Test administrator',
+				'roles_users' => 'administrator',
+			),
+			array(
+				'pauseDelayOnHover' => true,
+				'continueDelayOnInactiveTab' => false,
+				// 'closeOnClick' => false,
+				'delay' => false,
+				'closable' => false,
+				'title' => 'No delay',
+				'msg' => 'Test contributor',
+				'roles_users' => 'contributor',
+			),
+			// array(
+			// 	'msg' => 'Test x1',
+			// ),
+			// array(
+			// 	'msg' => 'Test x2',
+			// ),
+			// array(
+			// 	'msg' => 'Test x3',
+			// ),
+			// array(
+			// 	'msg' => 'Test x4',
+			// ),
+			// array(
+			// 	'msg' => 'Test x5',
+			// ),
+			// array(
+			// 	'msg' => 'Test x6',
+			// ),
+			// array(
+			// 	'msg' => 'Test x7',
+			// ),
+			// array(
+			// 	'msg' => 'Test x8',
+			// ),
+			// array(
+			// 	'msg' => 'Test x9',
+			// ),
+			// array(
+			// 	'msg' => 'Test x10',
+			// ),
+		);
 
-		// );
-
-		// $messages = array_merge( $messages, $messages_test );
+		$messages = array_merge( $messages, $messages_test );
 
 		$messages = $this->check_notifications( $messages );
 

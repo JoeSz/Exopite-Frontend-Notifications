@@ -51,27 +51,6 @@ define( 'EXOPITE_FRONTEND_NOTIFICATIONS_VERSION', '20190705' );
 define( 'EXOPITE_FRONTEND_NOTIFICATIONS_PLUGIN_NAME', 'exopite-frontend-notifications' );
 define( 'EXOPITE_FRONTEND_NOTIFICATIONS_PATH', plugin_dir_path( __FILE__ ) );
 
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-exopite-frontend-notifications-activator.php
- */
-function activate_exopite_frontend_notifications() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-exopite-frontend-notifications-activator.php';
-	Exopite_Frontend_Notifications_Activator::activate();
-}
-
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-exopite-frontend-notifications-deactivator.php
- */
-function deactivate_exopite_frontend_notifications() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-exopite-frontend-notifications-deactivator.php';
-	Exopite_Frontend_Notifications_Deactivator::deactivate();
-}
-
-register_activation_hook( __FILE__, 'activate_exopite_frontend_notifications' );
-register_deactivation_hook( __FILE__, 'deactivate_exopite_frontend_notifications' );
-
  /**
  * Update
  */
