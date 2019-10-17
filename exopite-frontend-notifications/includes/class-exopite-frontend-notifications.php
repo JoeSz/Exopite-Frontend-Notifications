@@ -166,10 +166,16 @@ class Exopite_Frontend_Notifications {
 
         $this->loader->add_action( 'wp_ajax_efn_dismiss_notifications', $plugin_public, 'ajax_dismiss_notifications' );
 
+        /**
+         * @link https://webkul.com/blog/wordpress-add-custom-links-plugin-page/
+         */
+        $this->loader->add_filter( 'plugin_row_meta', $plugin_public, 'plugin_row_meta', 10, 2 );
+
+        /**
+         * Demonstrate a test callback to e.g. remove AJAX notification on user click.
+         */
 		// $this->loader->add_action( 'wp_ajax_efn_test_callback', $plugin_public, 'test_callback' );
 		// $this->loader->add_action( 'wp_ajax_nopriv_efn_test_callback', $plugin_public, 'test_callback' );
-
-		// $this->loader->add_action( 'wp_footer', $plugin_public, 'footer_test' );
 
 	}
 
