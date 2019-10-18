@@ -222,6 +222,8 @@ class Exopite_Frontend_Notifications_Public {
 
 		$ret = array();
 
+        if ( ! is_array( $notifications ) ) return array();
+
 		foreach ( $notifications as $key => $notification ) {
 			if ( isset( $notification['msg'] ) ) {
 
@@ -464,7 +466,7 @@ class Exopite_Frontend_Notifications_Public {
 		// 	),
 		// );
 
-		$messages = array_merge( $messages, $messages_test );
+		// $messages = array_merge( $messages, $messages_test );
 
 		$messages = $this->check_notifications( $messages );
 
