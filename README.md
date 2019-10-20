@@ -123,14 +123,12 @@ Browsers
 CHANGELOG
 ---------
 
-= 20181123 =
-* Add plugin upgrade notification.
+= 20191020 =
+* Add readme
+* Add screenshot
 
-= 20180415 =
-* Fix updater location.
-
-= 20180330 =
-* Initial release.
+= 20191017 =
+* Initial release
 
 LICENSE DETAILS
 ---------------

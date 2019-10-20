@@ -74,6 +74,7 @@ add_action('wp_ajax_nopriv_my_ajax_callback_function', 'my_ajax_callback_functio
 
 = 20191020 =
 * Add readme
+* Add screenshot
 
 = 20191017 =
 * Initial release
