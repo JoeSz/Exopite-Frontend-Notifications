@@ -11,6 +11,8 @@ Display frontend notifications thru hooks with lobibox (PHP & AJAX).
 
 == Description ==
 
+This plugin neither has options nor display anything after activation. You have to use hooks to use this plugin.
+
 Display frontend PHP notifications via 'efn_messages' hook and/or AJAX notifications via 'efn_messages_ajax' hook.
 
 AJAX functionality is disabled by default, you can enable with the 'efn_enable_ajax' hook.

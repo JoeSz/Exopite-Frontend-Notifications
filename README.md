@@ -1,6 +1,6 @@
 # Exopite Frontend Notifications
 ## WordPress Plugin
-Display IP Lookup form and enetered IP geo location with [exopite-geo-location] shortcode.
+Display frontend notifications thru hooks with lobibox (PHP & AJAX).
 
 - Author: Joe Szalai
 - Version: 20191020
@@ -12,7 +12,6 @@ Display IP Lookup form and enetered IP geo location with [exopite-geo-location] 
 
 DESCRIPTION
 -----------
-
 
 This plugin neither has options nor display anything after activation. You have to use hooks to use this plugin.
 
