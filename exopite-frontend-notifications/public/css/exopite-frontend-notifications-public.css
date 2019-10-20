@@ -4,3 +4,7 @@
 .lobibox-notify-wrapper.right {
     right: 5px;
 }
+.lobibox-notify-msg {
+    line-height: 1.3;
+    font-size: 13px;
+}
