@@ -6,7 +6,7 @@ Display frontend notifications thru hooks with lobibox (PHP & AJAX).
 - Version: 20191020
 - Plugin URL: https://github.com/JoeSz/Exopite-Frontend-Notifications
 - Demo URL: https://www.joeszalai.org/exopite/frontend-notifications/
-- Author URL: https://joe.szalai.org
+- Author URL: https://www.joeszalai.org
 - License: GNU General Public License v3 or later
 - License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
