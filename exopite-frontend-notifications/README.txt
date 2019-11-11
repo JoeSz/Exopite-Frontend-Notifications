@@ -23,6 +23,7 @@ Check for all options and previews: http://lobianijs.com/site/lobibox#notificati
 
 == How to use ==
 
+```php
 function my_ajax_notifications( $messages ) {
 
     $my_messages = array(
@@ -47,7 +48,9 @@ function my_ajax_notifications( $messages ) {
     return $messages;
 }
 add_filter( 'efn_messages_ajax', 'my_ajax_notifications' );
+```
 
+```php
 function my_ajax_callback_function() {
 
     $element = $_POST['element]; // The options array for the notification.
@@ -59,6 +62,7 @@ function my_ajax_callback_function() {
 
 add_action('wp_ajax_my_ajax_callback_function', 'my_ajax_callback_function');
 add_action('wp_ajax_nopriv_my_ajax_callback_function', 'my_ajax_callback_function');
+```
 
 == Installation ==
 
@@ -71,6 +75,9 @@ add_action('wp_ajax_nopriv_my_ajax_callback_function', 'my_ajax_callback_functio
 1. Screenshot
 
 == Changelog ==
+
+= 20191111 =
+* Update Plugin Update Checker to 4.8
 
 = 20191020 =
 * Add readme
