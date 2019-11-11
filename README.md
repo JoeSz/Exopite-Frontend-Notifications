@@ -123,6 +123,9 @@ Browsers
 CHANGELOG
 ---------
 
+= 20191111 =
+* Update Plugin Update Checker to 4.8
+
 = 20191020 =
 * Add readme
 * Add screenshot
