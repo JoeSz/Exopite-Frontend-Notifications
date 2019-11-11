@@ -52,7 +52,7 @@ define( 'EXOPITE_FRONTEND_NOTIFICATIONS_PLUGIN_NAME', 'exopite-frontend-notifica
 define( 'EXOPITE_FRONTEND_NOTIFICATIONS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'EXOPITE_FRONTEND_NOTIFICATIONS_BASENAME', plugin_basename( __FILE__ ) );
 
- /**
+/**
  * Update
  */
 if ( is_admin() ) {
@@ -87,12 +87,12 @@ if ( is_admin() ) {
      * This version add an extra <p> after the notice.
      * I want that to remove later.
      */
-    add_action('in_plugin_update_message-plugin-name/plugin-name.php', 'show_upgrade_notification', 10, 2);
-    function show_upgrade_notification( $current_plugin_metadata, $new_plugin_metadata ){
+    add_action('in_plugin_update_message-' . EXOPITE_FRONTEND_NOTIFICATIONS_PLUGIN_NAME . '/' . EXOPITE_FRONTEND_NOTIFICATIONS_PLUGIN_NAME . '.php', 'show_upgrade_notification_exopite_frontend_notifications', 10, 2);
+    function show_upgrade_notification_exopite_frontend_notifications( $current_plugin_metadata, $new_plugin_metadata ){
        // check "upgrade_notice"
        if (isset( $new_plugin_metadata->upgrade_notice ) && strlen( trim( $new_plugin_metadata->upgrade_notice ) )  > 0 ) {
 
-            echo '<span style="background-color:#d54e21;padding:6px;color:#f9f9f9;margin-top:10px;display:block;"><strong>' . esc_html( 'Upgrade Notice', 'plugin-name' ) . ':</strong><br>';
+            echo '<span style="background-color:#d54e21;padding:6px;color:#f9f9f9;margin-top:10px;display:block;"><strong>' . esc_html( 'Upgrade Notice', 'exopite-frontend-notifications' ) . ':</strong><br>';
             echo esc_html( $new_plugin_metadata->upgrade_notice );
             echo '</span>';
 
