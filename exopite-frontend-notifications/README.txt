@@ -24,6 +24,38 @@ Check for all options and previews: http://lobianijs.com/site/lobibox#notificati
 == How to use ==
 
 ```php
+function my_notifications( $messages ) {
+
+    $my_messages = array(
+        array(
+            'pauseDelayOnHover' => true,
+            'continueDelayOnInactiveTab' => false,
+            // 'closeOnClick' => false,
+            'delay' => false,
+            'closable' => false,
+            'title' => 'No delay',
+            'msg' => 'Test logged_in',
+            'roles_users' => 'logged_in',
+
+            // Sort messages
+            'priority' => 10,
+            'date' => '2000-12-31 23:59:59',
+
+            // Display message in a time frame
+            'start' => '2000-12-31 23:59:59',
+            'end' => '2022-12-31 23:59:59',
+        ),
+        // ...
+    );
+
+    $messages = array_merge( $messages, $my_messages );
+
+    return $messages;
+}
+add_filter( 'efn_messages_ajax', 'my_notifications' );
+```
+
+```php
 function my_ajax_notifications( $messages ) {
 
     $my_messages = array(
@@ -48,13 +80,14 @@ function my_ajax_notifications( $messages ) {
     return $messages;
 }
 add_filter( 'efn_messages_ajax', 'my_ajax_notifications' );
+add_filter( 'efn_enable_ajax', '__return_true' );
 ```
 
 ```php
 function my_ajax_callback_function() {
 
-    $element = $_POST['element]; // The options array for the notification.
-    $my_id = $_POST['element][id];
+    $element = $_POST['element']; // The options array for the notification.
+    $my_id = $_POST['element']['id'];
 
     // do something with the infos.
 
@@ -75,6 +108,13 @@ add_action('wp_ajax_nopriv_my_ajax_callback_function', 'my_ajax_callback_functio
 1. Screenshot
 
 == Changelog ==
+
+= 20191122 =
+* Add priority for messages (for sort)
+* Add date for messages (for sort)
+* Add start (as ISO date y-m-d H:i:s) for messages
+* Add end (as ISO date y-m-d H:i:s) for messages
+* Fix some AJAX issues
 
 = 20191111 =
 * Update Plugin Update Checker to 4.8

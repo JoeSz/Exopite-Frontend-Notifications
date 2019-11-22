@@ -3,7 +3,7 @@
 Display frontend notifications thru hooks with lobibox (PHP & AJAX).
 
 - Author: Joe Szalai
-- Version: 20191020
+- Version: 20191122
 - Plugin URL: https://github.com/JoeSz/Exopite-Frontend-Notifications
 - Demo URL: https://www.joeszalai.org/exopite/frontend-notifications/
 - Author URL: https://www.joeszalai.org
@@ -39,7 +39,14 @@ function my_notifications( $messages ) {
             'title' => 'No delay',
             'msg' => 'Test logged_in',
             'roles_users' => 'logged_in',
-            // this is optional, to react on user dismiss, only in AJAX available
+
+            // Sort messages
+            'priority' => 10,
+            'date' => '2000-12-31 23:59:59',
+
+            // Display message in a time frame
+            'start' => '2000-12-31 23:59:59',
+            'end' => '2022-12-31 23:59:59',
         ),
         // ...
     );
@@ -77,11 +84,12 @@ function my_ajax_notifications( $messages ) {
     return $messages;
 }
 add_filter( 'efn_messages_ajax', 'my_ajax_notifications' );
+add_filter( 'efn_enable_ajax', '__return_true' );
 
 function my_ajax_callback_function() {
 
-    $element = $_POST['element]; // The options array for the notification.
-    $my_id = $_POST['element][id];
+    $element = $_POST['element']; // The options array for the notification.
+    $my_id = $_POST['element']['id'];
 
     // do something with the infos.
 
@@ -99,10 +107,6 @@ INSTALLATION
 ------------
 
 1. [x] Upload `exopite-frontend-notifications` to the `/wp-content/plugins/exopite-frontend-notifications/` directory
-
-OR
-
-1. [ ] ~~Install plugin from WordPress repository (not yet)~~
 
 2. [x] Activate the plugin through the 'Plugins' menu in WordPress
 
@@ -122,6 +126,13 @@ Browsers
 
 CHANGELOG
 ---------
+
+= 20191122 =
+* Add priority for messages (for sort)
+* Add date for messages (for sort)
+* Add start (as ISO date y-m-d H:i:s) for messages
+* Add end (as ISO date y-m-d H:i:s) for messages
+* Fix some AJAX issues
 
 = 20191111 =
 * Update Plugin Update Checker to 4.8
