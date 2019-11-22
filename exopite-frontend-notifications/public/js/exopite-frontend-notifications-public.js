@@ -31,6 +31,8 @@ const getCircularReplacer = () => {
                 url: efn_settings.ajaxurl,
                 data: {
                     'action': 'efn_get_notifications',
+                    'post_id': efn_settings.post_id,
+                    'post_slug': efn_settings.post_slug,
                 },
                 success: function( response ){
 
@@ -77,23 +79,22 @@ const getCircularReplacer = () => {
                     iconSource: message.iconSource,
                     size: message.size,
                     // onClick: function(e){
-                    //     console.log('e: ' + JSON.stringify(e, getCircularReplacer()));
-                    //     console.log('me: ' + JSON.stringify(this, getCircularReplacer()));
-                    //     console.log('el: ' + JSON.stringify(this.$el.attr('class'), getCircularReplacer()));
+                    //     // console.log('e: ' + JSON.stringify(e, getCircularReplacer()));
+                    //     // console.log('me: ' + JSON.stringify(this, getCircularReplacer()));
+                    //     // console.log('el: ' + JSON.stringify(this.$el.attr('class'), getCircularReplacer()));
                     // },
                     // onHide: function(){
-                    //     console.log('me: ' + JSON.stringify(this, getCircularReplacer()));
-                    //     console.log('el: ' + JSON.stringify(this.$el.attr('class'), getCircularReplacer()));
+                    //     // console.log('me: ' + JSON.stringify(this, getCircularReplacer()));
+                    //     // console.log('el: ' + JSON.stringify(this.$el.attr('class'), getCircularReplacer()));
                     // },
                     // onAutoDismiss: function (){
-                    //     console.log('me: ' + JSON.stringify(this, getCircularReplacer()));
-                    //     console.log('el: ' + JSON.stringify(this.$el.attr('class'), getCircularReplacer()));
+                    //     // console.log('me: ' + JSON.stringify(this, getCircularReplacer()));
+                    //     // console.log('el: ' + JSON.stringify(this.$el.attr('class'), getCircularReplacer()));
                     // },
                     onDismiss: function (e){
                         if ( ! efn_settings.ajax ) return;
                         try {
                             if (typeof (this.$options) !== "undefined" && typeof this.$options.callback !== "undefined" && this.$options.callback !== null) {
-
                                 $.ajax({
                                     cache: false,
                                     type: "POST",
