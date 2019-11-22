@@ -16,7 +16,7 @@
  * Plugin Name:       Exopite Frontend Notifications
  * Plugin URI:        https://www.joeszalai.org/exopite/frontend-notifications
  * Description:       Display frontend notifications thru hooks with lobibox (PHP & AJAX).
- * Version:           20191111
+ * Version:           20191122
  * Author:            Joe Szalai
  * Author URI:        https://www.joeszalai.org
  * License:           GPL-3.0+
@@ -47,7 +47,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'EXOPITE_FRONTEND_NOTIFICATIONS_VERSION', '20191111' );
+define( 'EXOPITE_FRONTEND_NOTIFICATIONS_VERSION', '20191122' );
 define( 'EXOPITE_FRONTEND_NOTIFICATIONS_PLUGIN_NAME', 'exopite-frontend-notifications' );
 define( 'EXOPITE_FRONTEND_NOTIFICATIONS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'EXOPITE_FRONTEND_NOTIFICATIONS_BASENAME', plugin_basename( __FILE__ ) );
