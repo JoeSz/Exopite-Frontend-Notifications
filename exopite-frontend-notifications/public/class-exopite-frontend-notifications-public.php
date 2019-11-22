@@ -94,11 +94,17 @@ class Exopite_Frontend_Notifications_Public {
     }
 
     public function footer_settings() {
+
+        global $post;
+
         return array(
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
             'interval' => apply_filters( 'efn_ajax_inerval', 11000 ),
-            'ajax' => apply_filters( 'efn_enable_ajax', false ),
+            'ajax' => ( is_archive() || is_home() ) ? false : apply_filters( 'efn_enable_ajax', false ),
+            'post_id' => get_the_ID(),
+            'post_slug' => $post->post_name,
         );
+
     }
 
     /**
@@ -152,7 +158,7 @@ class Exopite_Frontend_Notifications_Public {
 		// 	),
 		// );
 
-		$messages = $this->check_notifications( $messages );
+		$messages = $this->check_notifications( $messages, intval( $_POST['post_id'] ), sanitize_title( $_POST['post_slug'] ) );
 
 		die( json_encode( $messages ) );
 	}
@@ -178,7 +184,7 @@ class Exopite_Frontend_Notifications_Public {
 		delay: 5000,                // Hide notification after this time (in miliseconds)
 		delayIndicator: true,       // Show timer indicator
 		closeOnClick: true,         // Close notifications by clicking on them
-		width: 400,                 // Width of notification box
+		width: 400,                 // Width of notification box (auto is full width)
 		sound: true,                // Sound of notification. Set this false to disable sound. Leave as is for default sound or set custom soud path
 		position: "bottom right"    // Place to show notification. Available options: "top left", "top right", "bottom left", "bottom right"
 		iconSource: "bootstrap"     // "bootstrap" or "fontAwesome" the library which will be used for icons
@@ -208,7 +214,9 @@ class Exopite_Frontend_Notifications_Public {
 			'img' => false,
 			'icon' => true,
 			'iconSource' => 'fontAwesome',
-			'size' => 'normal', // normal, mini, large
+            'size' => 'normal', // normal, mini, large
+            'priority' => 10,
+            'date' => date( 'Y-m-d' ),
 			// 'roles_users' => 'all',
 			// 'pages' => 'all',
 		);
@@ -218,11 +226,13 @@ class Exopite_Frontend_Notifications_Public {
 	 * ToDos:
 	 * - escape all
 	 */
-	public function check_notifications( $notifications ) {
+	public function check_notifications( $notifications, $post_id = null, $post_slug = null ) {
 
 		$ret = array();
 
         if ( ! is_array( $notifications ) ) return array();
+
+        $now = new DateTime();
 
 		foreach ( $notifications as $key => $notification ) {
 			if ( isset( $notification['msg'] ) ) {
@@ -241,8 +251,28 @@ class Exopite_Frontend_Notifications_Public {
 				}
 
 				if ( $show && isset( $notification['pages'] ) ) {
-					$show = $this->check_pages( $notification['pages'] );
+					$show = $this->check_pages( $notification['pages'], $post_id, $post_slug );
 				}
+
+                if ( isset( $notification['start'] ) ) {
+
+                    $start = DateTime::createFromFormat( 'Y-m-d H:i:s', $notification['start'] );
+
+                    if ( $start && $start > $now ) {
+                        $show = false;
+                    }
+
+                }
+
+                if ( isset( $notification['end'] ) ) {
+
+                    $end = DateTime::createFromFormat( 'Y-m-d H:i:s', $notification['end'] );
+
+                    if ( $end && $end < $now ) {
+                        $show = false;
+                    }
+
+                }
 
 				if ( $show ) {
 					$ret[] = $notification;
@@ -251,10 +281,26 @@ class Exopite_Frontend_Notifications_Public {
 			}
 		}
 
+        /**
+         * https://stackoverflow.com/questions/2699086/how-to-sort-multi-dimensional-array-by-value/2699159#2699159
+         */
+        // usort( $ret, function( $a, $b ) {
+        //     return $a['priority'] - $b['priority'];
+        // });
+
+        /**
+         * https://stackoverflow.com/questions/3232965/sort-multidimensional-array-by-multiple-keys/3233009#3233009
+         */
+        array_multisort(
+            array_column( $ret, 'date' ), SORT_DESC,
+            array_column( $ret, 'priority' ), SORT_DESC,
+            $ret
+        );
+
 		return $ret;
 	}
 
-	public function check_pages( $pages ) {
+	public function check_pages( $pages, $post_id = null, $post_slug = null ) {
 
 		if ( $pages === true || $pages === null || $pages == 'all' ) {
 			return true;
@@ -267,11 +313,16 @@ class Exopite_Frontend_Notifications_Public {
 
 		}
 
-		global $post;
-		$post_slug = $post->post_name;
-		$post_id = get_the_ID();
+        if ( $post_slug === null ) {
+            global $post;
+            $post_slug = $post->post_name;
+        }
 
-		if ( ! $post_slug || ! $post_id ) {
+        if ( $post_id === null ) {
+            $post_id = get_the_ID();
+        }
+
+		if ( ! $post_slug && ! $post_id ) {
 			return false;
 		}
 
