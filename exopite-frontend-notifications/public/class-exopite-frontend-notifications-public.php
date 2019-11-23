@@ -99,7 +99,7 @@ class Exopite_Frontend_Notifications_Public {
 
         return array(
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
-            'interval' => apply_filters( 'efn_ajax_inerval', 11000 ),
+            'interval' => apply_filters( 'efn_ajax_inerval', 10000 ),
             'ajax' => ( is_archive() || is_home() ) ? false : apply_filters( 'efn_enable_ajax', false ),
             'post_id' => get_the_ID(),
             'post_slug' => $post->post_name,
