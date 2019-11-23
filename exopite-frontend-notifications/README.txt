@@ -17,7 +17,7 @@ Display WordPress frontend toast notifications via 'efn_messages' hook and/or AJ
 
 AJAX functionality is disabled by default, you can enable with the 'efn_enable_ajax' hook.
 
-The plugin check AJAX messages every 10 sec. You can change this with 'efn_ajax_inerval' hook. Every message will be displyed only once, it will be displayed agaon after browser reload.
+The plugin check AJAX messages every 10 sec. You can change this with 'efn_ajax_inerval' hook. Every message will be displyed only once per page load, it will be displayed again after browser reload.
 If you want to display the same message multiple times, need to add some field with a unique value per message.
 
 Check for all options and previews: http://lobianijs.com/site/lobibox#notifications
