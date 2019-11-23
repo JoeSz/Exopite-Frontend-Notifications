@@ -47,7 +47,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'EXOPITE_FRONTEND_NOTIFICATIONS_VERSION', '20191122' );
+define( 'EXOPITE_FRONTEND_NOTIFICATIONS_VERSION', '20191123' );
 define( 'EXOPITE_FRONTEND_NOTIFICATIONS_PLUGIN_NAME', 'exopite-frontend-notifications' );
 define( 'EXOPITE_FRONTEND_NOTIFICATIONS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'EXOPITE_FRONTEND_NOTIFICATIONS_BASENAME', plugin_basename( __FILE__ ) );
