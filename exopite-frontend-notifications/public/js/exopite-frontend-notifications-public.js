@@ -11,12 +11,16 @@ const getCircularReplacer = () => {
     };
 };
 
+// var hash = require('object-hash');
+
 (function( $ ) {
 	'use strict';
 
 	// https://learn.jquery.com/code-organization/concepts/
 	var exopiteFrontendNotifications = {
-		init: function( settings ) {
+
+        displayedMessages: [],
+        init: function( settings ) {
             exopiteFrontendNotifications.displayMessages( efn_messages );
             if (efn_settings.ajax) {
                 setTimeout(exopiteFrontendNotifications.checkAJAX, efn_settings.interval);
@@ -52,10 +56,36 @@ const getCircularReplacer = () => {
             });
 
         },
+        hash: function(str, asString, seed) {
+            /**
+             * Compatible with IE11.
+             * https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript/22429679#22429679
+             */
+            /*jshint bitwise:false */
+            var i, l,
+                hval = (seed === undefined) ? 0x811c9dc5 : seed;
+
+            for (i = 0, l = str.length; i < l; i++) {
+                hval ^= str.charCodeAt(i);
+                hval += (hval << 1) + (hval << 4) + (hval << 7) + (hval << 8) + (hval << 24);
+            }
+            if( asString ){
+                // Convert to 8 digit hex string
+                return ("0000000" + (hval >>> 0).toString(16)).substr(-8);
+            }
+            return hval >>> 0;
+        },
         displayMessages: function ( messages ) {
 			var thisClass = this;
 
             $.each(messages, function (k, message) {
+
+                var messageHash = thisClass.hash( JSON.stringify(message) );
+                if (thisClass.displayedMessages.indexOf(messageHash) > -1 ) {
+                    return;
+                } else {
+                    thisClass.displayedMessages.push(messageHash);
+                }
 
                 var args = {
                     pauseDelayOnHover: message.pauseDelayOnHover,
