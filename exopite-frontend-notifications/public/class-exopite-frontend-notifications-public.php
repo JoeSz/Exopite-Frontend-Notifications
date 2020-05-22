@@ -99,7 +99,6 @@ class Exopite_Frontend_Notifications_Public {
 
 		/*
 		[22-May-2020 01:55:10 UTC] PHP Notice:  Trying to get property 'post_name' of non-object in joeszalai.org/wp-content/plugins/exopite-frontend-notifications/public/class-exopite-frontend-notifications-public.php on line 105
-		[22-May-2020 03:00:56 UTC] PHP Notice:  wpdb::prepare was called <strong>incorrectly</strong>. The query only expected one placeholder, but an array of multiple placeholders was sent. Please see <a href="https://wordpress.org/support/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 4.9.0.) in joeszalai.org/wp-includes/functions.php on line 5167
 		*/
 
 		// Alternatives
