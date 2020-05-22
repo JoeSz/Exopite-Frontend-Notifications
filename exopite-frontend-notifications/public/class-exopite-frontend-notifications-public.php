@@ -97,12 +97,28 @@ class Exopite_Frontend_Notifications_Public {
 
         global $post;
 
+		/*
+		[22-May-2020 01:55:10 UTC] PHP Notice:  Trying to get property 'post_name' of non-object in joeszalai.org/wp-content/plugins/exopite-frontend-notifications/public/class-exopite-frontend-notifications-public.php on line 105
+		[22-May-2020 03:00:56 UTC] PHP Notice:  wpdb::prepare was called <strong>incorrectly</strong>. The query only expected one placeholder, but an array of multiple placeholders was sent. Please see <a href="https://wordpress.org/support/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 4.9.0.) in joeszalai.org/wp-includes/functions.php on line 5167
+		*/
+
+		// Alternatives
+		// 1.)
+		// // Get the queried object and sanitize it
+		// $current_page = sanitize_post( $GLOBALS['wp_the_query']->get_queried_object() );
+		// // Get the page slug
+		// $slug = $current_page->post_name;
+		// 2.)
+		// $slug = get_post_field( 'post_name', get_post() );
+
+		$slug = ( is_object( $post ) ) ? $post->post_name : '';
+
         return array(
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
             'interval' => apply_filters( 'efn_ajax_inerval', 10000 ),
             'ajax' => ( is_archive() || is_home() ) ? false : apply_filters( 'efn_enable_ajax', false ),
             'post_id' => get_the_ID(),
-            'post_slug' => $post->post_name,
+            'post_slug' => $slug,
         );
 
     }
