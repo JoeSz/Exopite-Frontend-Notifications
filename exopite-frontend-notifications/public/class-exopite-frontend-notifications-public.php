@@ -97,10 +97,6 @@ class Exopite_Frontend_Notifications_Public {
 
         global $post;
 
-		/*
-		[22-May-2020 01:55:10 UTC] PHP Notice:  Trying to get property 'post_name' of non-object in joeszalai.org/wp-content/plugins/exopite-frontend-notifications/public/class-exopite-frontend-notifications-public.php on line 105
-		*/
-
 		// Alternatives
 		// 1.)
 		// // Get the queried object and sanitize it
@@ -330,7 +326,10 @@ class Exopite_Frontend_Notifications_Public {
 
         if ( $post_slug === null ) {
             global $post;
-            $post_slug = $post->post_name;
+
+            if ( ! empty( $post ) && is_object( $post ) ) {
+                $post_slug = $post->post_name;
+            }
         }
 
         if ( $post_id === null ) {
