@@ -58,7 +58,7 @@ function my_notifications( $messages ) {
 
     return $messages;
 }
-add_filter( 'efn_messages_ajax', 'my_notifications' );
+add_filter( 'efn_messages', 'my_notifications' );
 ```
 
 AJAX
