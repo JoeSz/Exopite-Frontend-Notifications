@@ -177,6 +177,8 @@ class Exopite_Frontend_Notifications {
 		// $this->loader->add_action( 'wp_ajax_efn_test_callback', $plugin_public, 'test_callback' );
 		// $this->loader->add_action( 'wp_ajax_nopriv_efn_test_callback', $plugin_public, 'test_callback' );
 
+		$this->loader->add_action( 'wp_footer', $this->public, 'display_messages_in_wp_footer', 10 );
+
 	}
 
 	/**

@@ -84,7 +84,6 @@ class Exopite_Frontend_Notifications_Public {
 		// Register the script
 		wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/exopite-frontend-notifications-public.js', array( 'jquery', 'lobibox', 'lobibox-messageboxes', 'lobibox-notifications' ), $this->version, true );
 
-		wp_localize_script( $this->plugin_name, 'efn_messages', $this->footer_get_notifications() );
 		wp_localize_script( $this->plugin_name, 'efn_settings', $this->footer_settings() );
 
 		// Enqueued script with localized data.
@@ -536,6 +535,18 @@ class Exopite_Frontend_Notifications_Public {
 		$messages = $this->check_notifications( $messages );
 
 		return $messages;
+
+	}
+
+	public function display_messages_in_wp_footer() {
+
+		?>
+		<script type='text/javascript'>
+		/* <![CDATA[ */
+		var efn_messages = <?php echo json_encode( $this->footer_get_notifications() ); ?>;
+		/* ]]> */
+		</script>
+		<?php
 
 	}
 
