@@ -308,7 +308,7 @@ class Exopite_Frontend_Notifications_Public {
             $ret
         );
 
-		return $ret;
+		return apply_filters( 'efn_messages_notifications', $ret );
 	}
 
 	public function check_pages( $pages, $post_id = null, $post_slug = null ) {
